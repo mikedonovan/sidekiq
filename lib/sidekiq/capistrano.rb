@@ -4,8 +4,8 @@ Capistrano::Configuration.instance.load do
   after "deploy:start",   "sidekiq:start"
   after "deploy:restart", "sidekiq:restart"
 
-  _cset(:sidekiq_cmd) { "#{fetch(:bundle_cmd, "bundle")} exec sidekiq" }
-  _cset(:sidekiqctl_cmd) { "#{fetch(:bundle_cmd, "bundle")} exec sidekiqctl" }
+  _cset(:sidekiq_cmd) { "bundle exec sidekiq" }
+  _cset(:sidekiqctl_cmd) { "bundle exec sidekiqctl" }
   _cset(:sidekiq_timeout)   { 10 }
   _cset(:sidekiq_role)      { :app }
   _cset(:sidekiq_pid)       { "#{current_path}/tmp/pids/sidekiq.pid" }
